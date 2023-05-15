@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Enroll Course</title>
+</head>
+<body>
+<div layout:fragment="content" class="container body-content">
+  <h2>Enroll Course</h2>
+  <form th:action="@{/enroll}" th:object="${enrollment}" method="post" class="form">
+    <div class="form-group">
+      <label for="name">Your Name:</label>
+      <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Your Name">
+    </div>
+    <div class="form-group">
+      <label for="email">Your Email:</label>
+      <input class="form-control" type="email" th:field="*{email}" id="email" placeholder="Your Email">
+    </div>
+    <div class="form-group">
+      <label for="phone">Your Phone:</label>
+      <input class="form-control" type="tel" th:field="*{phone}" id="phone" placeholder="Your Phone">
+    </div>
+    <hr>
+    <h4>Course Information</h4>
+    <div class="form-group">
+      <label for="place">Place:</label>
+      <input class="form-control" type="text" th:value="${enrollment.course.place}" readonly id="place">
+    </div>
+    <div class="form-group">
+      <label for="startDate">Start Date:</label>
+      <input class="form-control" type="date" th:value="${enrollment.course.startDate}" readonly id="startDate">
+    </div>
+    <div class="form-group">
+      <label for="lectureName">Lecturer:</label>
+      <input class="form-control" type="text" th:value="${enrollment.course.lectureName}" readonly id="lectureName">
+    </div>
+    <input type="submit" class="btn btn-success" value="Enroll">
+  </form>
+</div>
+</body>
+</html>
